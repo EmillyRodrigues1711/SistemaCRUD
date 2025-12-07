@@ -114,5 +114,5 @@ FROM alunos WHERE cidade = 'Crateús' ORDER BY bairro, nome_aluno LIMIT 5;
 3. **Dashboard de Análise** (painel.php com Gráficos, Cards e Relatórios)
     ![Dashboard Início](images/dashboard_inicial.png)
     ![Dashboard com Gráficos](images/graficos.png)
-    ![Dashboard com Gráficos](images/graficos#3a#5.png)
-    ![Dashboard com Relatórios](images/consultas#9e#10.png)
+    ![Dashboard com Gráficos](images/graficos.png)
+    ![Dashboard com Relatórios](images/consultas.png)
