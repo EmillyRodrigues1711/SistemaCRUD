@@ -29,18 +29,19 @@ O sistema utiliza um banco de dados chamado **login**. As duas tabelas principai
 
 Esta tabela armazena as credenciais de acesso para a tela de login (index.php). A senha é armazenada utilizando a função de hash **MD5**, garantindo que a senha original não seja armazenada em texto simples.
 
-sql
+`sql```
 CREATE TABLE users (
     user_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(100) NOT NULL,
     user_email VARCHAR(150) NOT NULL UNIQUE,
     user_password VARCHAR(32) NOT NULL -- O tamanho 32 é compatível com o hash MD5
-);
+);```
 
 ## 3.2 Tabela alunos(Cadastro Principal)
 
 Esta é a tabela central para o CRUD do sistema e para a geração de relatórios e gráficos. Ela armazena os dados pessoais, de endereço e de matrícula dos candidatos.
 
+`sql```
 CREATE TABLE alunos(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_aluno VARCHAR(100) NOT NULL,
@@ -52,7 +53,7 @@ CREATE TABLE alunos(
     nome_responsavel VARCHAR(100) NOT NULL,
     tipo_responsavel INT(1) NOT NULL,  -- 1-pai, 2-mãe, etc...
     curso INT(1) NOT NULL -- 1-enfermagem, 2-informatica, etc...
-);
+);```
 
 ## 3.3 População do Banco de Dados:
  O arquivo SQL completo, contendo os comandos CREATE TABLE e mais de 100 registros (INSERT INTO), deve ser importado através do PHPMyAdmin e está disponível na raiz do repositório com o nome: banco_populacao.sql.
