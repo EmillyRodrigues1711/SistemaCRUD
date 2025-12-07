@@ -1,12 +1,14 @@
-Sistema CRUD - TRABALHO BANCO DE DADOS
+## Sistema CRUD - TRABALHO BANCO DE DADOS
 * Produzido por Emilly Rodrigues Silva
 * Disciplina ministrada pelo Professor Adeilson Aragão
+
+------
 
 ## INTRODUÇÃO
 
 Este projeto consiste no desenvolvimento de um **Sistema CRUD (Create, Read, Update, Delete)** para **o Sistema de Cadastro de Alunos**. O objetivo principal é demonstrar o ciclo completo de interação entre o banco de dados MySQL e uma interface web construída com PHP. O sistema abrange a inserção de dados via formulário e a apresentação de relatórios e análises através de consultas SQL avançadas. Para validação e robustez, o banco de dados foi populado com **mais de 100 registros**.
 
-------
+---
 
 ## TECNOLOGIAS UTILIZADAS
 
@@ -17,7 +19,7 @@ Este projeto consiste no desenvolvimento de um **Sistema CRUD (Create, Read, Upd
 * **Biblioteca Chart.js:** Biblioteca JavaScript utilizada para a **visualização de dados**, gerando gráficos dinâmicos (barras, pizza, etc.) a partir das consultas de agregação do banco de dados.
 * **Git / GitHub:** Plataforma utilizada para controle de versão e entrega do código-fonte do projeto.
 
-------
+---
 
 ## ESTRUTURA BANCO DE DADOS (SQL)
 
@@ -56,3 +58,43 @@ CREATE TABLE alunos(
 ## CONSULTAS CRIADAS E ANALISES VISUAIS
 
 As 10 consultas abaixo estão implementadas no arquivo painel.php e são a base para a geração dos gráficos, cards e relatórios do sistema. 
+
+* **Consulta #1**: Alunos por Cidade, **Visualização por Gráfico**
+-> SELECT cidade, COUNT(id) AS Total 
+FROM alunos GROUP BY cidade ORDER BY Total DESC;
+
+* **Consulta #2**: Alunos por Curso **Visualização por Gráfico**
+-> SELECT curso, COUNT(id) AS Total 
+FROM alunos GROUP BY curso ORDER BY curso;
+
+* **Consulta #3**: Tipo de Responsável **Visualização por Gráfico**
+-> SELECT tipo_responsavel, COUNT(id) AS Total 
+FROM alunos GROUP BY tipo_responsavel;
+
+* **Consulta #4**: Alunos por Bairro (Apenas Crateús) **Visualização por Gráfico**
+-> SELECT bairro, COUNT(id) AS Total 
+FROM alunos WHERE cidade = 'Crateús' GROUP BY bairro 
+HAVING Total > 1 ORDER BY Total DESC;
+
+* **Consulta #5**: Distribuição de Idade (Ano de Nascimento) **Visualização por Gráfico**
+-> SELECT YEAR(data_nasc) AS Ano, COUNT(id) AS Total 
+FROM alunos GROUP BY Ano ORDER BY Ano;
+
+* **Consulta #6**: Total Geral de Candidatos **Visualização por Cards**
+-> SELECT COUNT(id) AS Total FROM alunos;
+
+* **Consulta #7**: Média de Idade **Visualização por Cards**
+-> SELECT AVG(YEAR(CURDATE()) - YEAR(data_nasc)) AS Media_Idade FROM alunos;
+
+* **Consulta #8**: Cidades Atendidas / **Baseado na Consulta #1** **Visualização por Cards**
+-> SELECT cidade, COUNT(id) AS Total 
+FROM alunos GROUP BY cidade ORDER BY Total DESC;
+
+* **Consulta #9**: Alunos Mais Novos **Visualização por Relatório**
+-> SELECT nome_aluno, data_nasc, nome_responsavel 
+FROM alunos ORDER BY data_nasc DESC LIMIT 5;
+
+* **Consulta #9**: Alunos de Crateús Detalhado **Visualização por Relatório**
+->SELECT nome_aluno, rua, bairro, cep
+FROM alunos WHERE cidade = 'Crateús' ORDER BY bairro, nome_aluno LIMIT 5;
+
