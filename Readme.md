@@ -29,7 +29,7 @@ O sistema utiliza um banco de dados chamado **login**. As duas tabelas principai
 
 Esta tabela armazena as credenciais de acesso para a tela de login (index.php). A senha é armazenada utilizando a função de hash **MD5**, garantindo que a senha original não seja armazenada em texto simples.
 
-```sql
+sql
 CREATE TABLE users (
     user_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(100) NOT NULL,
