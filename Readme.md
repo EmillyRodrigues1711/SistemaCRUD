@@ -29,7 +29,7 @@ O sistema utiliza um banco de dados chamado **login**. As duas tabelas principai
 
 Esta tabela armazena as credenciais de acesso para a tela de login (index.php). A senha é armazenada utilizando a função de hash **MD5**, garantindo que a senha original não seja armazenada em texto simples.
 
-`sql```
+sql```
 CREATE TABLE users (
     user_id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(100) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE users (
 
 Esta é a tabela central para o CRUD do sistema e para a geração de relatórios e gráficos. Ela armazena os dados pessoais, de endereço e de matrícula dos candidatos.
 
-`sql```
+sql```
 CREATE TABLE alunos(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_aluno VARCHAR(100) NOT NULL,
@@ -60,7 +60,32 @@ CREATE TABLE alunos(
 
 ---
 
-# 4. CONSULTAS CRIADAS E ANALISES VISUAIS
+# 4. GUIA DE USO E FLUXO DO SISTEMA
+
+## 4.1  Instruções de Setup
+Você já tem a instrução do SQL, mas pode consolidar os passos básicos para rodar o projeto.
+* Instalação do Ambiente:
+Requer XAMPP/WAMP (ou similar) com Apache e MySQL ativos.
+* Configuração do Banco:
+Crie o banco de dados chamado login (como definido em conexao.php).
+Importe o arquivo banco_populacao.sql via PHPMyAdmin.
+---
+
+## 4.2 Fluxo de Login e Acesso
+* Autenticação.
+**Cadastro de Usuário**: Acesse o `index.php` e clique em "Creat one" (no rodapé, referenciando register.php) para criar uma credencial na tabela users.
+
+**Login**: Use o e-mail e senha cadastrados para acessar o sistema via `login.php`. O acesso bem-sucedido redireciona para o `painel.php`.
+
+---
+## 4.3 Guia Rápido do CRUD
+
+* **form.php**: Create -> Insere novos candidatos no sistema.
+* **list.php**: Read -> Tabela que lista todos os candidatos. Inclui botões para as ações de Edição (editar.php) e Exclusão (excluir.php).
+* **painel.php**: Dashboard -> Exibe os relatórios e os gráficos dinâmicos (Chart.js) gerados pelas 10 consultas SQL de análise.
+
+---
+# 5. CONSULTAS CRIADAS E ANALISES VISUAIS
 
 As 10 consultas abaixo estão implementadas no arquivo painel.php e são a base para a geração dos gráficos, cards e relatórios do sistema. 
 
@@ -105,14 +130,16 @@ FROM alunos WHERE cidade = 'Crateús' ORDER BY bairro, nome_aluno LIMIT 5;
 
 ----
 
-# 5. DEMONTRAÇÃO DO SISTEMA
+# 6. DEMONTRAÇÃO DO SISTEMA
 
 1. **Tela Login e Cadastro de Usuário**
     ![Tela de Login do Sistema CRUD](images/tela_login.png)
+   ---
 2. **Interface CRUD** (Formulário e Lista de Alunos)
     ![Formulário de Cadastro de Alunos](images/cadastro.png)
     ![Tabela de Listagem com Opções CRUD](images/lista_alunos.png)
-3. **Dashboard de Análise** (painel.php com Gráficos, Cards e Relatórios)
+   ---
+4. **Dashboard de Análise** (painel.php com Gráficos, Cards e Relatórios)
     ![Dashboard Início](images/dashboard_inicial.png)
     ![Dashboard com Gráficos](images/graficos.png)
     ![Dashboard com Gráficos](images/graficos2.png)
