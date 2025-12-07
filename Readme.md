@@ -69,15 +69,12 @@ Requer XAMPP/WAMP (ou similar) com Apache e MySQL ativos.
 * Configuração do Banco:
 Crie o banco de dados chamado login (como definido em conexao.php).
 Importe o arquivo banco_populacao.sql via PHPMyAdmin.
----
 
 ## 4.2 Fluxo de Login e Acesso
-* Autenticação.
-**Cadastro de Usuário**: Acesse o `index.php` e clique em "Creat one" (no rodapé, referenciando register.php) para criar uma credencial na tabela users.
+* **Cadastro de Usuário**: Acesse o `index.php` e clique em "Creat one" (no rodapé, referenciando register.php) para criar uma credencial na tabela users.
 
-**Login**: Use o e-mail e senha cadastrados para acessar o sistema via `login.php`. O acesso bem-sucedido redireciona para o `painel.php`.
+* **Login**: Use o e-mail e senha cadastrados para acessar o sistema via `login.php`. O acesso bem-sucedido redireciona para o `painel.php`.
 
----
 ## 4.3 Guia Rápido do CRUD
 
 * **form.php**: Create -> Insere novos candidatos no sistema.
@@ -85,6 +82,7 @@ Importe o arquivo banco_populacao.sql via PHPMyAdmin.
 * **painel.php**: Dashboard -> Exibe os relatórios e os gráficos dinâmicos (Chart.js) gerados pelas 10 consultas SQL de análise.
 
 ---
+
 # 5. CONSULTAS CRIADAS E ANALISES VISUAIS
 
 As 10 consultas abaixo estão implementadas no arquivo painel.php e são a base para a geração dos gráficos, cards e relatórios do sistema. 
